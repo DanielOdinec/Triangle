@@ -22,10 +22,7 @@ namespace Triangle
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Run_button_Click(object sender, EventArgs e)
         {
@@ -42,12 +39,30 @@ namespace Triangle
             listView1.Items.Add("Существует?");
             listView1.Items.Add("Спецификатор");
             listView1.Items[0].SubItems.Add(triangle.outputA()); // методы по выводу сторон a,b,c
-            listView1.Items[1].SubItems.Add(triangle.outputB());
-            listView1.Items[2].SubItems.Add(triangle.outputB());
-            listView1.Items[3].SubItems.Add(Convert.ToString(triangle.Perimeter()));
-            listView1.Items[4].SubItems.Add(Convert.ToString(triangle.Surface()));
-            if (triangle.ExistTriangle) { listView1.Items[5].SubItems.Add("Существует"); }
+            listView1.Items[1].SubItems.Add(triangle.outputB()); // Item' y с индексом [i] присваиваем значение сабайтема
+            listView1.Items[2].SubItems.Add(triangle.outputC());
+            listView1.Items[3].SubItems.Add(Convert.ToString(triangle.Perimeter())); //выводим периметр
+            listView1.Items[4].SubItems.Add(Convert.ToString(triangle.Surface())); //выводим значение площади
+            if (triangle.ExistTriangle) { listView1.Items[5].SubItems.Add("Существует"); } // свойтство Triangle.exist
             else listView1.Items[5].SubItems.Add("Не существует");
+            listView1.Items[6].SubItems.Add(triangle.TriangleType);
+            if (triangle.TriangleType == "равносторонний")
+            {
+                pictureBox2.Image = Properties.Resources.triangle;
+            }
+            else if (triangle.TriangleType == "разносторонний")
+            {
+                pictureBox2.Image = Properties.Resources.raznostoronny;
+            }
+            else if (triangle.TriangleType == "равнобедренный")
+            {
+                pictureBox2.Image = Properties.Resources.ravnobedrenny;
+            }
+            else
+            {
+                pictureBox2.Image = Properties.Resources.vopros;
+            }
+        }
 
 
 
@@ -55,8 +70,14 @@ namespace Triangle
 
 
 
+    
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            New_form frm = new New_form();
+            frm.Show();
 
 
         }
+        
     }
 }
